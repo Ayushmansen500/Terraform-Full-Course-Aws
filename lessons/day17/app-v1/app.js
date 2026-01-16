@@ -21,79 +21,139 @@ app.get('/health', (req, res) => {
 // Main route
 app.get('/', (req, res) => {
   res.send(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Version 1.0 - Blue Environment</title>
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 100vh;
-          background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-        }
-        .container {
-          text-align: center;
-          background: white;
-          padding: 60px 80px;
-          border-radius: 20px;
-          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-          max-width: 600px;
-        }
-        h1 {
-          color: #1e3c72;
-          font-size: 2.5em;
-          margin-bottom: 20px;
-        }
-        .version {
-          color: #2a5298;
-          font-size: 3em;
-          font-weight: bold;
-          margin: 20px 0;
-        }
-        .environment {
-          background: #1e3c72;
-          color: white;
-          padding: 15px 30px;
-          border-radius: 50px;
-          display: inline-block;
-          font-size: 1.2em;
-          margin: 20px 0;
-        }
-        .info {
-          color: #666;
-          margin-top: 30px;
-          line-height: 1.8;
-        }
-        .badge {
-          display: inline-block;
-          background: #4CAF50;
-          color: white;
-          padding: 5px 15px;
-          border-radius: 20px;
-          font-size: 0.9em;
-          margin: 10px 5px;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>🚀 Welcome to the Blue-Green Deployment Demo</h1>
-        <div class="version">Version 1.0</div>
-        <div class="environment">🔵 BLUE ENVIRONMENT</div>
-        <div class="info">
-          <p><strong>Status:</strong> <span class="badge">PRODUCTION</span></p>
-          <p>This is the current production environment running the stable Version 1.0 of the application.</p>
-          <p><strong>Server Time:</strong> ${new Date().toISOString()}</p>
-          <p><strong>Hostname:</strong> ${require('os').hostname()}</p>
-        </div>
-      </div>
-    </body>
-    </html>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blue Deployment | Release v1</title>
+
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --secondary: #1b6ca8;
+      --success: #2ecc71;
+      --text-dark: #2c3e50;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1b6ca8, #0f4c81);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #ffffff;
+      width: 90%;
+      max-width: 640px;
+      padding: 50px 60px;
+      border-radius: 18px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+
+    .card h1 {
+      color: var(--text-dark);
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #7f8c8d;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    .release {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 20px 0;
+    }
+
+    .env-tag {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+
+    .details {
+      text-align: left;
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-top: 25px;
+    }
+
+    .label {
+      display: inline-block;
+      background: var(--success);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-left: 8px;
+    }
+
+    .footer {
+      margin-top: 35px;
+      font-size: 0.85rem;
+      color: #999;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>🚀 Welcome to The CloudDevOpsHub Blue-Green Deployment Demo</h1>
+    <div class="subtitle">Blue-Green Release Strategy Demo</div>
+
+    <div class="release">Release v1.0</div>
+
+    <div class="env-tag">BLUE ENVIRONMENT</div>
+
+    <div class="details">
+      <p>
+        <strong>Deployment State:</strong>
+        <span class="label">LIVE</span>
+      </p>
+
+      <p>
+        This instance represents the active production workload currently
+        serving users under the blue deployment phase.
+      </p>
+
+      <p>
+        <strong>Server Timestamp:</strong><br />
+        ${new Date().toISOString()}
+      </p>
+
+      <p>
+        <strong>Running Host:</strong><br />
+        ${require("os").hostname()}
+      </p>
+    </div>
+
+    <div class="footer">
+      Managed deployment • Zero-downtime architecture
+    </div>
+  </div>
+</body>
+</html>
+
   `);
 });
 
